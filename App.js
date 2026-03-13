@@ -12,7 +12,8 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  useColorScheme
+  useColorScheme,
+  Modal
 } from 'react-native';
 import getStyles from './styles';
 
@@ -22,17 +23,26 @@ const IMAGE_TWO = 'https://i.pravatar.cc/300?img=12';
 export default function App() {
   const [name, setName] = useState('');
   const [profileImage, setProfileImage] = useState(IMAGE_ONE);
+  const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '' });
   const colorScheme = useColorScheme();
 
   const isDarkMode = colorScheme === 'dark';
   const styles = getStyles(isDarkMode);
 
+  const showAlert = (title, message) => {
+    setAlertConfig({ visible: true, title, message });
+  };
+
+  const closeAlert = () => {
+    setAlertConfig({ ...alertConfig, visible: false });
+  };
+
   const handleSave = () => {
     if (!name.trim()) {
-      Alert.alert('Erro', 'Por favor, insira um nome antes de salvar.');
+      showAlert('Erro!', 'Por favor, insira um nome antes de salvar o seu perfil.');
       return;
     }
-    Alert.alert('Perfil Salvo', `O nome "${name}" foi salvo com sucesso!`);
+    showAlert('Sucesso!', `O perfil de "${name}" foi salvo com as novas configurações.`);
   };
 
   const toggleImage = () => {
@@ -76,6 +86,27 @@ export default function App() {
               <Text style={styles.saveButtonText}>Salvar Perfil</Text>
             </TouchableOpacity>
           </View>
+
+          {/* Modal de Alerta Customizado (Vermelho) */}
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={alertConfig.visible}
+            onRequestClose={closeAlert}
+          >
+            <View style={styles.modalOverlay}>
+              <View style={styles.alertContainer}>
+                <View style={styles.alertIconContainer}>
+                  <Text style={styles.alertIcon}>⚠️</Text>
+                </View>
+                <Text style={styles.alertTitle}>{alertConfig.title}</Text>
+                <Text style={styles.alertMessage}>{alertConfig.message}</Text>
+                <TouchableOpacity style={styles.alertButton} onPress={closeAlert}>
+                  <Text style={styles.alertButtonText}>Entendido</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
