@@ -1,0 +1,107 @@
+import { StyleSheet } from 'react-native';
+
+const getStyles = (isDarkMode) => StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        backgroundColor: isDarkMode ? '#121212' : '#F0F2F5',
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
+    card: {
+        width: '100%',
+        maxWidth: 400,
+        backgroundColor: isDarkMode ? '#1E1E1E' : '#FFFFFF',
+        borderRadius: 24,
+        padding: 30,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: isDarkMode ? 0.4 : 0.1,
+        shadowRadius: 12,
+        elevation: 8,
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: '800',
+        color: isDarkMode ? '#FFFFFF' : '#1A1A1A',
+        marginBottom: 30,
+        letterSpacing: -0.5,
+    },
+    imageContainer: {
+        alignItems: 'center',
+        marginBottom: 30,
+    },
+    profileImage: {
+        width: 150,
+        height: 150,
+        borderRadius: 75,
+        borderWidth: 4,
+        borderColor: isDarkMode ? '#818CF8' : '#6366F1',
+        marginBottom: 15,
+    },
+    toggleButton: {
+        backgroundColor: isDarkMode ? '#312E81' : '#EEF2FF',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: isDarkMode ? '#4338CA' : '#E0E7FF',
+    },
+    toggleButtonText: {
+        color: isDarkMode ? '#C7D2FE' : '#4F46E5',
+        fontSize: 14,
+        fontWeight: '600',
+    },
+    inputContainer: {
+        width: '100%',
+        marginBottom: 25,
+    },
+    label: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: isDarkMode ? '#D1D5DB' : '#4B5563',
+        marginBottom: 8,
+        marginLeft: 4,
+    },
+    input: {
+        width: '100%',
+        height: 55,
+        backgroundColor: isDarkMode ? '#2D2D2D' : '#F9FAFB',
+        borderRadius: 16,
+        paddingHorizontal: 20,
+        fontSize: 16,
+        color: isDarkMode ? '#FFFFFF' : '#1F2937',
+        borderWidth: 1,
+        borderColor: isDarkMode ? '#4B5563' : '#E5E7EB',
+    },
+    saveButton: {
+        width: '100%',
+        height: 55,
+        backgroundColor: isDarkMode ? '#818CF8' : '#6366F1',
+        borderRadius: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: isDarkMode ? '#818CF8' : '#6366F1',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        elevation: 4,
+    },
+    saveButtonText: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontWeight: '700',
+    },
+});
+
+export default getStyles;
